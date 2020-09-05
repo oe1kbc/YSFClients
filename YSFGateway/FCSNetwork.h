@@ -41,13 +41,13 @@ public:
 
 	bool open();
 
-	void setOptions(const std::string& options);
-
 	void clearDestination();
 
 	void write(const unsigned char* data);
 
 	bool writeLink(const std::string& reflector);
+
+	void setOptions(const std::string& options);
 
 	void writeUnlink(unsigned int count = 1U);
 
@@ -63,9 +63,9 @@ private:
 	in_addr                        m_address;
 	unsigned char*                 m_ping;
 	unsigned char*                 m_options;
-	std::string                    m_opt;
 	unsigned char*                 m_info;
 	std::string                    m_reflector;
+	std::string                    m_opt;
 	std::string                    m_print;
 	CRingBuffer<unsigned char>     m_buffer;
 	std::map<std::string, in_addr> m_addresses;
@@ -74,9 +74,9 @@ private:
 	CTimer                         m_resetTimer;
 	FCS_STATE                      m_state;
 
-	void writeOptions();
 	void writeInfo();
 	void writePing();
+	void writeOptions();
 };
 
 #endif
